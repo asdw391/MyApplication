@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 //import cn.uprogrammer.contentprovider.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         // Retrieve student records
         String URL = "content://com.buaa.a.myapplication/entry";
 
-        Uri students = Uri.parse(URL);
-        Cursor c = getContentResolver().query(students, null, null, null, "date");
+        Uri entry = Uri.parse(URL);
+        Cursor c = getContentResolver().query(entry, null, null, null, "date");
 
         if (c.moveToFirst()) {
             do{
@@ -65,4 +66,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onClick_goto_search(View view){
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
 }
