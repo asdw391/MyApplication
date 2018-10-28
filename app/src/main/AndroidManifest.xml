@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <provider android:name="EntryProvider"
+            android:authorities="com.buaa.a.myapplication" >
+        </provider>
     </application>
 
 </manifest>
