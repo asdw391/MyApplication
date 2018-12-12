@@ -21,7 +21,10 @@
             android:name=".EntryProvider"
             android:authorities="com.buaa.a.myapplication" />
 
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".add_entry" />
+        <activity android:name=".activity_dialog" />
+        <activity android:name=".add_Activity"></activity>
     </application>
 
 </manifest>
