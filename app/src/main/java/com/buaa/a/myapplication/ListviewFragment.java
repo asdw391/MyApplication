@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.TextView;
@@ -31,7 +32,10 @@ public class ListviewFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private List<entry> entryList = new ArrayList<entry>();
+    public static  entry now_entry;
+    public static int entry_index;
+    public static entryAdapter adapter;
+    public static  List<entry> entryList = new ArrayList<entry>();
 
 
     // TODO: Rename and change types of parameters
@@ -95,7 +99,7 @@ public class ListviewFragment extends Fragment {
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          view=inflater.inflate(R.layout.fragment_listview,container,false);
         initEntry();
-        entryAdapter adapter=new entryAdapter(getActivity(),R.layout.entry_item,entryList);
+         adapter=new entryAdapter(getActivity(),R.layout.entry_item,entryList);
          ListView listView = (ListView) view.findViewById(R.id.List_view2);
 
 
@@ -103,6 +107,25 @@ public class ListviewFragment extends Fragment {
         if (listView != null) {
             listView.setAdapter(adapter);
         }
+        //ListView item的点击事件
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String[] args = {};
+                 now_entry=(entry) adapter.getItem(i);
+                ViewDialogFragment entry_dialog=new ViewDialogFragment();
+                entry_dialog.show(getActivity().getFragmentManager(),"EditNameDialog");
+                entry_index=i;
+                //adapter.notifyDataSetChanged();
+                /*Uri uri_ = Uri.parse(EntryProvider.URL+"/"+String.valueOf(now_entry.get_ID()));
+                int delete_num = getContext().getContentResolver().delete(uri_
+                        ,"",args);
+                entryList.remove(i);
+                Toast.makeText(getActivity(), "delete " + delete_num, Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();*/
+            }
+        });
 
         return view;
     }
@@ -137,6 +160,7 @@ public class ListviewFragment extends Fragment {
         super.onHiddenChanged(hidden);
 
     }
+
 
 
     /*@Override

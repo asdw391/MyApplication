@@ -34,7 +34,7 @@ public class add_Fragment extends Fragment {
     private Button date_button;
     private Spinner spinner;
     private Switch switch1;
-    private String now_choose;
+    private String now_choose="i";
     public static add_Fragment newInstance(String text){
         add_Fragment addFragment=new add_Fragment();
         Bundle bundle=new Bundle();
@@ -50,6 +50,8 @@ public class add_Fragment extends Fragment {
         my_veiw=view;
 
         date_button = (Button) view.findViewById(R.id.date_button);
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        final Date date = new Date(System.currentTimeMillis());
         if(date_button!=null) {
             date_button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -61,15 +63,14 @@ public class add_Fragment extends Fragment {
                             //Toast.makeText(getApplicationContext(), time, Toast.LENGTH_LONG).show();
                             handle_time(time);
                         }
-                    }, "2015-11-22 17:34", "2019-12-1 15:20");
+                    }, "2015-11-22 17:34", simpleDateFormat.format(date)+ " 15:20");
 
                     timeSelector.setMode(TimeSelector.MODE.YMD);
                     timeSelector.show();
                 }
             });
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
+
 
         date_button.setText(simpleDateFormat.format(date));
         //////////////////////////////
@@ -93,7 +94,7 @@ public class add_Fragment extends Fragment {
                         now_choose+((EditText)my_veiw.findViewById(R.id.备注)).getText().toString());
 
                 values.put(EntryProvider.TYPE,
-                        "er");
+                        ((Spinner)my_veiw.findViewById(R.id.spinner)).getSelectedItem().toString());
 
                 //((Spinner)my_veiw.findViewById(R.id.spinner)).getPrompt().toString()
                 Uri uri = getContext().getContentResolver().insert(
@@ -132,12 +133,12 @@ public class add_Fragment extends Fragment {
                     Toast.makeText(getActivity(),
                             "支出",
                             Toast.LENGTH_SHORT).show();
-                    now_choose="out";
+                    now_choose="o";
                 }else {
                     Toast.makeText(getActivity(),
                             "收入",
                             Toast.LENGTH_SHORT).show();
-                    now_choose="in";
+                    now_choose="i";
                 }
             }
         });
