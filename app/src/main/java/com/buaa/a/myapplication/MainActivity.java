@@ -22,6 +22,7 @@ import com.heima.tabview.library.TabViewChild;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     /*test push*/
     @Override
@@ -30,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<TabViewChild> tabViewChildList=new ArrayList<>();
-        TabViewChild tabViewChild01=new TabViewChild(R.mipmap.icon,R.mipmap.icon,"明细",  ListviewFragment.newInstance("这里是具体条目","123"));
-        TabViewChild tabViewChild02=new TabViewChild(R.mipmap.icon,R.mipmap.icon,"图表",  testFragment.newInstance("这里是统计表格"));
-        TabViewChild tabViewChild03=new TabViewChild(R.mipmap.icon,R.mipmap.icon,"记账",  add_Fragment.newInstance("添加"));
+        TabViewChild tabViewChild01=new TabViewChild(R.mipmap.list,R.mipmap.list,"明细",  ListviewFragment.newInstance("这里是具体条目","123"));
+        TabViewChild tabViewChild02=new TabViewChild(R.mipmap.pie,R.mipmap.pie,"图表",  testFragment.newInstance("这里是统计表格"));
+        TabViewChild tabViewChild03=new TabViewChild(R.mipmap.jizhang,R.mipmap.jizhang,"记账",  add_Fragment.newInstance("添加"));
         //TabViewChild tabViewChild04=new TabViewChild(R.mipmap.icon,R.mipmap.icon,"发现",testFragment.newInstance("发现"));
-        TabViewChild tabViewChild05=new TabViewChild(R.mipmap.icon,R.mipmap.icon,"我们",  testFragment.newInstance("关于我们"));
+        TabViewChild tabViewChild05=new TabViewChild(R.mipmap.setting,R.mipmap.setting,"我们",  test2Fragment.newInstance("这"));
         tabViewChildList.add(tabViewChild01);
         tabViewChildList.add(tabViewChild02);
         tabViewChildList.add(tabViewChild03);
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*public void onClickAddName(View view) {
+    /* public void onClickAddName(View view) {
         // Add a new student record
         ContentValues values = new ContentValues();
 

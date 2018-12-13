@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ChartView">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <com.lixs.charts.RadarChartView
-        android:id="@+id/radarView"
-        android:layout_width="match_parent"
-        android:layout_height="311dp"
-        />
+    <com.lixs.charts.PieChartView
+        android:id="@+id/pieView"
+        android:layout_width="wrap_content"
+        android:layout_height="364dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        app:backColor="#ffd9d9d9"
+        app:circleStrokeWidth='2dp' />
 
 
 </FrameLayout>

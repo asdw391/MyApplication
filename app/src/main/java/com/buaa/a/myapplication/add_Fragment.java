@@ -78,7 +78,13 @@ public class add_Fragment extends Fragment {
         comfirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String temp_string=((EditText)my_veiw.findViewById(R.id.金额)).getText().toString();
+                if(temp_string.isEmpty()){
+                    Toast.makeText(getActivity(),
+                            "请填写金额",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ContentValues values = new ContentValues();
 
 
@@ -130,15 +136,25 @@ public class add_Fragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
+                    now_choose="o";
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                            getActivity(), android.R.layout.simple_spinner_item,
+                            getData());
+                    spinner.setAdapter(adapter);
                     Toast.makeText(getActivity(),
                             "支出",
                             Toast.LENGTH_SHORT).show();
-                    now_choose="o";
+
                 }else {
+                    now_choose="i";
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                            getActivity(), android.R.layout.simple_spinner_item,
+                            getData());
+                    spinner.setAdapter(adapter);
                     Toast.makeText(getActivity(),
                             "收入",
                             Toast.LENGTH_SHORT).show();
-                    now_choose="i";
+
                 }
             }
         });
@@ -193,7 +209,13 @@ public class add_Fragment extends Fragment {
 
     public void onClickAddName(View view) {
         // Add a new student record
-
+        String temp_string=((Button)my_veiw.findViewById(R.id.date_button)).getText().toString();
+        if(temp_string.equals("")){
+            Toast.makeText(getActivity(),
+                    "请填写金额",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         ContentValues values = new ContentValues();
 
 
@@ -221,10 +243,24 @@ public class add_Fragment extends Fragment {
     private List<String> getData() {
 
              List<String> dataList = new ArrayList<String>();
-             dataList.add("吃饭");
-             dataList.add("睡觉");
-             dataList.add("打");
-             dataList.add("pfz");
+             if(now_choose.equals("i"))
+             {
+                 //收入
+
+                 dataList.add("工作");
+                 dataList.add("父母");
+             }
+             else{
+                 //支出
+                 dataList.add("零食");
+                 dataList.add("化妆");
+                 dataList.add("衣服");
+                 dataList.add("饮品");
+                 dataList.add("饮食");
+                 dataList.add("娱乐");
+                 dataList.add("学习");
+
+             }
              return dataList;
          }
 
